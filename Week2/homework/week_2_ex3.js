@@ -26,16 +26,16 @@ connection.connect((err) => {
 
 //SQL Query
 const getAuthorsWithMentor = `
-SELECT authors.author_name, authors.university, authors.date_of_birth, authors.h_index, authors.gender, authors.research_paper, mentor.author_name as mentor 
-FROM authors 
-JOIN authors as mentor 
-ON mentor.author_no = authors.author_no;
+SELECT authors.author_name, mentor.author_name AS mentor
+FROM authors
+JOIN authors AS mentor
+ON mentor.author_no = authors.mentor;
 `;
 const getAuthorsWithoutResearchPaper = `
-SELECT authors.*, research_paper.paper_title as paper_title
-FROM authors 
-LEFT JOIN research_paper 
-ON research_paper.paper_id = authors.research_paper;
+SELECT authors.*, research_paper.paper_title
+FROM author_research
+JOIN authors ON author_research.author_no = authors.author_no
+JOIN research_paper ON research_paper.paper_id = author_research.paper_id;
 `;
 // execute the query
 const executeQuery = (query) => {

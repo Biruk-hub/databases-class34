@@ -30,27 +30,31 @@ connection.connect((err) => {
 
 //SQL Query
 
-//create research_Paper table
-const createResearchPaperTable = `
-CREATE TABLE IF NOT EXISTS research_paper (
-        paper_id INT AUTO_INCREMENT PRIMARY KEY,
-        paper_title VARCHAR(50),
-        conference VARCHAR(50),
-        published_date DATE,
-        author_no INT NOT NULL,
-        FOREIGN KEY (author_no) REFERENCES authors(author_no)
-        );`;
 // delete table
 const deleteResearchPaperTable = `
     DROP TABLE IF EXISTS research_paper;
 `;
-//add research_paper to author table
-const addResearchPaperColumn = `
-ALTER TABLE authors ADD research_paper  INT;
+//create research_Paper table
+const createResearchPaperTable = `
+  CREATE TABLE IF NOT EXISTS research_paper (
+  paper_id INT AUTO_INCREMENT PRIMARY KEY,
+  paper_title VARCHAR(50),
+  conference VARCHAR(50),
+  published_date DATE
+);`;
+// delete authorResearch table if exists
+const deleteAuthorResearchTable = `
+    DROP TABLE IF EXISTS author_research;
 `;
-// assign research_paper to research_paper table
-const assignResearchPaper = `
-ALTER TABLE authors ADD FOREIGN KEY (research_paper) REFERENCES research_paper(paper_id);`;
+// create authorResearch table
+const addAuthorResearch = `
+CREATE TABLE IF NOT EXISTS author_research (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  author_no INT NOT NULL,
+  paper_id INT NOT NULL,
+  FOREIGN KEY (author_no) REFERENCES authors(author_no),
+  FOREIGN KEY (paper_id) REFERENCES research_paper(paper_id)
+);`;
 
 // End of SQL Query
 
@@ -58,8 +62,8 @@ ALTER TABLE authors ADD FOREIGN KEY (research_paper) REFERENCES research_paper(p
 const executeQuery = () => {
   [deleteResearchPaperTable,
   createResearchPaperTable,
-  addResearchPaperColumn,
-  assignResearchPaper,
+  deleteAuthorResearchTable,
+  addAuthorResearch,
   ].forEach((query) => {
     connection.query(query, (err) => {
       err && console.log("Error occurred when executing query : " + err);
@@ -86,14 +90,17 @@ const populateData = () => {
         console.log("Error occurred when inserting research data : " + err);
     });
   });
-
-  for (let i = 1; i <= 15; i++) {
-    let randomNumber = randomInt(1, 30);
-    const updateQuery = `UPDATE authors SET  research_paper = ${randomNumber} WHERE author_no = '${i}'`;
-    connection.query(updateQuery, (err) => {
+  // insert author_research data
+  for(let i = 1; i <= research.length; i++){ 
+    let randomAuthor = randomInt(1, 15);
+    let authorResearch = {
+      author_no: randomAuthor,
+      paper_id: i,
+    };
+    connection.query("INSERT INTO author_research SET ?", authorResearch, (err) => {
       err &&
-        console.log("Error occurred when updating research_paper : " + err);
-    });
+        console.log("Error occurred when inserting author_research data : " + err);
+    })
   }
   console.log("Data inserted successfully");
 };

@@ -27,42 +27,37 @@ connection.connect((err) => {
 
 // SQL Query
 const getAllResearchPapers = ` 
-SELECT research_paper.paper_title, COUNT(authors.author_no) as authors_count
+SELECT research_paper.paper_title, COUNT(author_research.author_no) AS authors_count
 FROM research_paper
-JOIN authors
-ON authors.research_paper = research_paper.paper_id
+JOIN author_research
+ON author_research.paper_id = research_paper.paper_id
 GROUP BY research_paper.paper_title;`;
 
 const getSumOfResearchPaperPublishedByFemaleAuthors = `
 SELECT COUNT(*) AS ResearchDoneByFemales
-FROM research_paper
-WHERE paper_id IN (
-    SELECT research_paper 
-    FROM authors
-    WHERE gender = 'F'
-);`;
+FROM author_research
+JOIN authors ON author_research.author_no = authors.author_no
+WHERE authors.gender = 'F';`;
 
 const averageH_IndexOfAllUniversity = `
-SELECT authors.university, AVG(authors.h_index) as average_h_index
+SELECT authors.university, AVG(authors.h_index) AS average_h_index
 FROM authors 
-JOIN authors as mentor 
-ON mentor.author_no = authors.author_no
 GROUP BY authors.university;
 `;
 
 const sumOfResearchPaperOfAuthorsPerUniversity = `
-SELECT authors.university, COUNT(research_paper.paper_title) as sum_of_research_papers
-FROM authors
-JOIN research_paper
-ON research_paper.paper_id = authors.research_paper
+SELECT authors.university, COUNT(research_paper.paper_title) AS sum_of_research_papers
+FROM author_research
+JOIN authors ON author_research.author_no = authors.author_no
+JOIN research_paper ON research_paper.paper_id = author_research.paper_id
 GROUP BY authors.university;
 `;
 
 const minAndMaxOfH_IndexOfAllUniversity = `
-SELECT authors.university, MIN(authors.h_index) as min_h_index, MAX(authors.h_index) as max_h_index
-FROM authors
-JOIN authors as mentor
-ON mentor.author_no = authors.author_no
+SELECT authors.university, MIN(authors.h_index) AS min_h_index, MAX(authors.h_index) AS max_h_index
+FROM author_research
+JOIN authors ON author_research.author_no = authors.author_no
+JOIN research_paper ON research_paper.paper_id = author_research.paper_id
 GROUP BY authors.university;
 `;
 

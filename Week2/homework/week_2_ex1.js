@@ -32,6 +32,10 @@ const deleteDatabase = "DROP DATABASE IF EXISTS artists";
 // use database
 const useDatabase = "USE artists";
 
+// delete table
+const deleteAuthorsTable = `
+    DROP TABLE IF EXISTS authors;
+`;
 //create table
 const createAuthorsTable = `
 CREATE TABLE IF NOT EXISTS authors (
@@ -42,10 +46,6 @@ CREATE TABLE IF NOT EXISTS authors (
      h_index INT,
      gender ENUM ('M', 'F')
      );`;
-// delete table
-const deleteAuthorsTable = `
-    DROP TABLE IF EXISTS authors;
-`;
 //add mentor to table
 const addMentorColumn = `
 ALTER TABLE authors ADD mentor INT;
@@ -69,12 +69,11 @@ const executeQuery = () => {
     addMentorColumn,
     assignMentor
   ].forEach((query) => { 
-    connection.query(query, (err, result) => {
+    connection.query(query, (err) => {
       if (err) {
         console.log(err);
         return;
       }
-      console.log(result);
     });
   });
 
