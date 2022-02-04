@@ -1,0 +1,182 @@
+[
+    {
+      "paper_title": "Javascript",
+      "conference": "Central Academy",
+      "published_date": "2000-01-01",
+      "author_no": 1
+    },
+    {
+      "paper_title": "Node JS",
+      "conference": "HYF Academy",
+      "published_date": "2000-02-01",
+      "author_no": 8
+    },
+    {
+      "paper_title": "Javascript",
+      "conference": "HYF Academy",
+      "published_date": "2000-03-01",
+      "author_no": 2
+    },
+    {
+      "paper_title": "Angular JS",
+      "conference": "Cambridge Academy",
+      "published_date": "2000-04-01",
+      "author_no": 2
+    },
+    {
+      "paper_title": "Vue JS",
+      "conference": "HYF Academy",
+      "published_date": "2002-02-01",
+      "author_no": 3
+    },
+    {
+      "paper_title": "Node JS",
+      "conference": "HYF Academy",
+      "published_date": "2000-02-01",
+      "author_no": 3
+    },
+    {
+      "paper_title": "React JS",
+      "conference": "MIT Academy",
+      "published_date": "1995-02-01",
+      "author_no": 1
+    },
+    {
+      "paper_title": "HTML",
+      "conference": "HYF Academy",
+      "published_date": "2000-02-01",
+      "author_no": 7
+    },
+    {
+      "paper_title": "HTML",
+      "conference": "Cambridge Academy",
+      "published_date": "2000-08-01",
+      "author_no": 6
+    },
+    {
+      "paper_title": "CSS",
+      "conference": "EL-Ehzer Academy",
+      "published_date": "2002-02-01",
+      "author_no": 6
+    },
+    {
+      "paper_title": "Tailwind",
+      "conference": "HYF Academy",
+      "published_date": "2005-02-01",
+      "author_no": 1
+    },
+    {
+      "paper_title": "Bootstrap 4.1",
+      "conference": "Inonu Academy",
+      "published_date": "2004-02-01",
+      "author_no": 13
+    },
+    {
+      "paper_title": "Node JS",
+      "conference": "Amsterdam Academy",
+      "published_date": "2006-02-01",
+      "author_no": 1
+    },
+    {
+      "paper_title": "SQL and MYSQL",
+      "conference": "Groningen Academy",
+      "published_date": "2008-02-01",
+      "author_no": 14
+    },
+    {
+      "paper_title": "Mongoose",
+      "conference": "Utrecht Academy",
+      "published_date": "2006-02-01",
+      "author_no": 5
+    },
+    {
+      "paper_title": "Next JS",
+      "conference": "HYF Academy",
+      "published_date": "2005-02-01",
+      "author_no": 12
+    },
+    {
+      "paper_title": "TypeScript",
+      "conference": "Maastricht Academy",
+      "published_date": "2008-02-01",
+      "author_no": 3
+    },
+    {
+      "paper_title": "Angular JS",
+      "conference": "Maastricht Academy",
+      "published_date": "2007-02-01",
+      "author_no": 3
+    },
+    {
+      "paper_title": "API and Browser",
+      "conference": "HYF Academy",
+      "published_date": "2004-02-01",
+      "author_no": 14
+    },
+    {
+      "paper_title": "Vue JS",
+      "conference": "Amsterdam Academy",
+      "published_date": "2009-05-01",
+      "author_no": 1
+    },
+    {
+      "paper_title": "React Native JS",
+      "conference": "Groningen Academy",
+      "published_date": "2009-09-09",
+      "author_no": 9
+    },
+    {
+      "paper_title": "Node JS",
+      "conference": "HYF Academy",
+      "published_date": "2000-02-01",
+      "author_no": 2
+    },
+    {
+      "paper_title": "GraphQL ",
+      "conference": "Inonu Academy",
+      "published_date": "2009-06-01",
+      "author_no": 4
+    },
+    {
+      "paper_title": "Python",
+      "conference": "Cambridge Academy",
+      "published_date": "2000-12-01",
+      "author_no": 12
+    },
+    {
+      "paper_title": "Django",
+      "conference": "HYF Academy",
+      "published_date": "2012-02-01",
+      "author_no": 13
+    },
+    {
+      "paper_title": "SQLite",
+      "conference": "Groningen Academy",
+      "published_date": "2014-02-01",
+      "author_no": 14
+    },
+    {
+      "paper_title": "Java",
+      "conference": "HYF Academy",
+      "published_date": "2012-02-01",
+      "author_no": 4
+    },
+    {
+      "paper_title": "PHP",
+      "conference": "HYF Academy",
+      "published_date": "2015-02-01",
+      "author_no": 5
+    },
+    {
+      "paper_title": "Go",
+      "conference": "Inonu Academy",
+      "published_date": "2019-02-01",
+      "author_no": 9
+    },
+    {
+      "paper_title": "Typescript",
+      "conference": "Oxford Academy",
+      "published_date": "2004-02-01",
+      "author_no": 14
+    }
+  ]

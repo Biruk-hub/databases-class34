@@ -3,7 +3,6 @@
 Exercise 1 : Keys
 
 */
-
 console.log("\n\nExercise 1 : Keys\n\n");
 // import mysql module
 let mysql = require("mysql");
@@ -30,6 +29,8 @@ connection.connect((err) => {
 const createDatabase = "CREATE DATABASE IF NOT EXISTS artists";
 // delete database
 const deleteDatabase = "DROP DATABASE IF EXISTS artists";
+// use database
+const useDatabase = "USE artists";
 
 //create table
 const createAuthorsTable = `
@@ -58,51 +59,29 @@ const assignMentor = `ALTER TABLE authors ADD FOREIGN KEY (mentor) REFERENCES au
 
 // execute the query
 
-// delete database
-connection.query(deleteDatabase, (error) => {
-    error
-    ? console.log("Error occurred while deleting the database : " + error)
-    : console.log("Database deleted successfully");
-});
+const executeQuery = () => {
+  // create database
+  [deleteDatabase,
+    createDatabase,
+    useDatabase,
+    deleteAuthorsTable,
+    createAuthorsTable,
+    addMentorColumn,
+    assignMentor
+  ].forEach((query) => { 
+    connection.query(query, (err, result) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log(result);
+    });
+  });
 
-// create database
-connection.query(createDatabase, (error) => {
-  error
-    ? console.log("Error occurred while creating the database : " + error)
-    : console.log("Database created successfully");
-});
-// use artist database
-connection.changeUser({ database: "artists" }, (error) => {
-  error
-    ? console.log("Error occurred while using database : " + error)
-    : console.log("Database changed successfully");
-});
-// delete authors table if exists
-connection.query(deleteAuthorsTable, (error) => {
-  error
-    ? console.log("Error occurred while deleting author table : " + error)
-    : console.log("Table dropped successfully");
-});
-// create authors table
-connection.query(createAuthorsTable, (error) => {
-  error
-    ? console.log("Error occurred while creating authors table : " + error)
-    : console.log("Table Authors created successfully");
-});
-// add mentor column
-connection.query(addMentorColumn, (error) => {
-  error
-    ? console.log(
-        "Error occurred while adding mentor column in artist table : " + error
-      )
-    : console.log("Column added successfully");
-});
-// assign mentor to author
-connection.query(assignMentor, (error) => {
-    error
-        ? console.log('Error occurred while assigning mentor to author : ' + error)
-        : console.log('Mentor assigned successfully');
-});
+}
+
+// call the function
+executeQuery();
 
 //close the connection
 connection.end((err) => {
