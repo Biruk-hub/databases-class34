@@ -34,8 +34,8 @@ ON mentor.author_no = authors.mentor;
 const getAuthorsWithoutResearchPaper = `
 SELECT authors.*, research_paper.paper_title
 FROM author_research
-JOIN authors ON author_research.author_no = authors.author_no
-JOIN research_paper ON research_paper.paper_id = author_research.paper_id;
+LEFT JOIN authors ON author_research.author_no = authors.author_no
+LEFT JOIN research_paper ON research_paper.paper_id = author_research.paper_id;
 `;
 // execute the query
 const executeQuery = (query) => {
