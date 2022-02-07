@@ -77,7 +77,7 @@ async function readDocumentByCityName() {
   const collection = db.collection("city");
   console.log('reading document by city name...');
   // find a document
-  collection.findOne({ name: "Addis Ababa", city_id: 212121 }, (err, result) => {
+  collection.findOne({ name: "Addis Ababa"}, (err, result) => {
     if (err) {
       console.log(err);
       return;

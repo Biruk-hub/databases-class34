@@ -12,19 +12,19 @@ const CONNECTION_CONFIG = {
   const CREATE_ACCOUNT_TABLE = `
     CREATE TABLE IF NOT EXISTS account (
       account_number INT PRIMARY KEY,
-      balance INT
+      balance FLOAT
     );`;
 //  account_changes query
   const CREATE_ACCOUNT_CHANGES_TABLE = `
     CREATE TABLE IF NOT EXISTS account_changes (
       change_number INT AUTO_INCREMENT PRIMARY KEY,
         account_number INT,
-        amount INT,
+        amount FLOAT,
         changed_date DATE,
         remark VARCHAR(255)
     );`;
 
-    async function seedDatabase() {
+    async function executeQuery() {
         //  create a connection
         const connection = mysql.createConnection(CONNECTION_CONFIG);
         // bind and promisify connection.query
@@ -43,4 +43,4 @@ const CONNECTION_CONFIG = {
         }
       }
       
-      seedDatabase();
+      executeQuery();

@@ -44,77 +44,49 @@ Solution
 
     Solution
 
-        1) create member table. { id(PK), name, location(FK), dinner(FK)}
-        2) create location table. { id(PK), address, house_number, postal_code}
-        3) create dinner table. {id, dinner_date(FK), venue_food(FK)}
-        4) create food table. { food_code(PK), food_description}
-        5) create venue table. { venue_code(PK), venue_description}
-        6) create date table. { id(PK), date}
+        1) create Member table. { id(PK), name, location(FK)}
+        2) create Order table. { id(PK), dinner_id(FK), member_id(FK)}
+        3) create Dinner table. {id, dinner_date(data), venue_code(FK)}
+        4) create FoodDinner table. {id, dinner_id(FK), food_id(Fk)}
+        5) create Food table. { food_code(PK), food_description}
+        6) create Venue table. { venue_code(PK), venue_description}
 
         <------ Joining/Junction Table----->
-        venueFood table. { id(PK), venue_id(FK), food_id(FK)}
+        FoodDinner. {id, dinner_id(FK), food_id(Fk)}
+        Order. { id(PK), dinner_id(FK), member_id(FK)}
 
     Output
 
-    Member table
-    +----------+------------+-----------------+----------------+
-    |   id     |    name    |   location_id   |    dinner_id   | 
-    +----------+------------+-----------------+----------------+
-    |        1 | Amit       |               1 |              1 |
-    |        2 | Ben        |               2 |              2 |
-    |        3 | Cristina   |               3 |              3 |
-    +----------+------------+-----------------+----------------+
+    1) Member table
 
-    Location table
-    +------+-------------+--------------+-------------+
-    | id   | address     | house_number | postal_code |
-    +------+-------------+--------------+-------------+
-    |    1 | John st     |           89 | 1234 CD     |
-    |    2 | Hudson lane |           24 | 1234 AB     |
-    |    3 | Max park    |          325 | 1234 AD     |
-    +------+-------------+--------------+-------------+
+    +----------+------------+-------------+--------------+-------------+
+    |   id     |    name    | address     | house_number | postal_code | 
+    +----------+------------+-------------+--------------+-------------+
 
-    Dinner table
-    +------+---------+------------+
-    | id   | date_id | venue_food |
-    +------+---------+------------+
-    |    1 |       1 |          1 |
-    |    2 |       2 |          2 |
-    |    3 |       3 |          3 |
-    +------+---------+------------+
+    2) Order table
 
-    Food table
+    +------+-----------+------------+
+    | id   | dinner_id | member_id  |
+    +------+-----------+------------+
+
+    3) Dinner table
+
+    +------+-----------+------------+
+    | id   | date_date | venue_code |
+    +------+-----------+------------+
+
+    4) FoodDinner table
+
+    +------+-----------+----------+
+    | id   | dinner_id | food_id  |
+    +------+-----------+----------+
+
+    5) Food table
     +-----------+------------------+
     | food_code | food_description |
     +-----------+------------------+
-    | C1        | Curry            |
-    | P1        | Pie              |
-    | G1        | Goulash          |
-    +-----------+------------------+
 
-    Venue table
+    6) Venue table
     +-----------+-------------------+
-    | venue_code | venue_description |
+    | venue_code| venue_description |
     +-----------+-------------------+
-    | B01       | Grand Ball Room   |
-    | B02       | Zoku Roof Top     |
-    | B03       | Goat Farm         |
-    +-----------+-------------------+
-
-    Date table
-    +------+---------------------+
-    | id   | date                |
-    +------+---------------------+
-    |    1 | 2020-03-15 13:23:44 |
-    |    2 | 2020-05-21 13:23:44 |
-    |    3 | 2020-06-07 13:23:44 |
-    +------+---------------------+
-
-    VenueFood table
-    +------+----------+---------+
-    | id   | venue_id | food_id |
-    +------+----------+---------+
-    |    1 | B01      | C1      |
-    |    1 | B02      | P1      |
-    |    1 | B03      | G1      |
-    +------+----------+---------+
